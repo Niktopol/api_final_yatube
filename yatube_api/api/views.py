@@ -62,7 +62,7 @@ class FollowViewSet(CreateListViewSet):
     def perform_create(self, serializer):
         following = serializer.validated_data['following']
 
-        if (following == self.request.user or
+        if (following == self.request.user or 
             Follow.objects.filter(user=self.request.user,
                                   following=following).exists()):
             raise serializers.ValidationError("Can't follow yourself "
